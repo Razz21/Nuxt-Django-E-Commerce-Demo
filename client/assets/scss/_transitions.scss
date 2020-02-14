@@ -1,0 +1,12 @@
+.fade-page {
+  &-leave-active {
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+
+  &-enter,
+  &-leave-active {
+    opacity: 0;
+  }
+}

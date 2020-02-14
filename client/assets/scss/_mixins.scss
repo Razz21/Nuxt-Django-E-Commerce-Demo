@@ -1,0 +1,18 @@
+$breakpoints: (
+  sm: 600px,
+  md: 960px,
+  lg: 1248px,
+  xl: 1888px
+);
+
+@mixin breakpoint($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value !=null and not unitless($value) {
+    @media screen and (min-width: $value) {
+      @content;
+    }
+  } @else {
+    @error "Invalid breakpoint `#{$breakpoint}`.";
+  }
+}

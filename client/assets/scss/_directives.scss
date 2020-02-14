@@ -1,0 +1,15 @@
+.expand {
+  overflow: hidden;
+  transition-property: height;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+
+  &[aria-expanded="false"] {
+    height: 0 !important;
+    transition-timing-function: ease;
+  }
+}
+
+.u-no-transition {
+  transition-duration: 0s !important;
+}

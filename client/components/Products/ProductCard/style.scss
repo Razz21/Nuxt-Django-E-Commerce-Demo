@@ -1,0 +1,30 @@
+.item {
+  $this: &;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  --easing: cubic-bezier(0.5, 1, 0.5, 1.5);
+  --duration: 0.3s;
+
+  &:hover {
+    #{$this}-content {
+      transform: translateY(10px);
+    }
+  }
+
+  &-content {
+    transition: transform var(--duration) var(--easing);
+  }
+
+  &-img {
+    &-bg {
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+  }
+}

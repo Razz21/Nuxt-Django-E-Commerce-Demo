@@ -1,0 +1,114 @@
+#payment-form {
+  width: 100%;
+}
+
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+/* page state */
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: 1fr / 1fr;
+}
+
+.screen {
+  grid-area: 1 / 1;
+}
+
+[data-scene] {
+  transition-property: visibility, display;
+  transition-duration: 0s;
+  transition-delay: 0.5s;
+  transition-timing-function: linear;
+  visibility: hidden;
+  display: none;
+
+  > * {
+    transition: opacity 0.5s linear;
+    opacity: 0;
+  }
+}
+
+[data-state="IDLE"] [data-scene="form"],
+[data-state="LOADING"] [data-scene],
+[data-state="ERROR"] [data-scene],
+[data-state="SUCCESS"] [data-scene="progress"] {
+  visibility: visible;
+
+  > * {
+    opacity: 1;
+  }
+
+  transition-delay: 0s;
+}
+
+[data-state="SUCCESS"] [data-scene="form"] {
+  display: none;
+}
+
+[data-scene="progress"] {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: #fffc;
+}
+
+[data-scene="form"] {
+  display: block;
+}
+
+/* =========== */
+.progress {
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.8s;
+  }
+
+  &-leave-active {
+    position: absolute;
+  }
+
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  &-move {
+    transition: transform 0.8s;
+  }
+}
