@@ -1,6 +1,7 @@
 # About the project
 
 Django + Nuxt E-Commerce demo app
+
 This project is broken into a Django/Rest-Framework rest api and Nuxt frontend.
 
 ## Features
