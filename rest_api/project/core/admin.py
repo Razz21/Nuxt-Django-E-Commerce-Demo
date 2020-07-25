@@ -30,8 +30,7 @@ make_refund_accepted.short_description = "Update orders to refund granted"
 
 
 @admin.register(Material)
-class MaterialColorAdmin(admin.ModelAdmin):
-    form = ItemColorForm
+class MaterialAdmin(admin.ModelAdmin):
     search_fields = ["name"]
     list_display = ["name", "products_count"]
 
@@ -43,7 +42,7 @@ class MaterialColorAdmin(admin.ModelAdmin):
 class ItemColorAdmin(admin.ModelAdmin):
     form = ItemColorForm
     search_fields = ["name"]
-    list_display = ["name", "products_count", "hex", "color_preview"]
+    list_display = ["name", "products_count",  "color_preview"]
 
     def color_preview(self, obj):
         return format_html(

@@ -3,6 +3,7 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save, pre_delete
+from django.db.models import Case, When, functions
 from django.core.validators import MinValueValidator, RegexValidator
 
 from decimal import Decimal
@@ -26,13 +27,13 @@ class ItemManager(models.Manager):
         qs = super().get_queryset()
 
         qs = qs.annotate(
-            order_price=models.Case(
-                models.When(discount_price__isnull=False, then="discount_price"),
-                default="price",
+            order_price=Case(
+                When(discount_price__isnull=False, then=functions.Cast("discount_price", models.FloatField())),
+                default=functions.Cast("price", models.FloatField() ),
             )
         )
-
         return qs
+    
 
 
 def get_upload_path(instance, filename):
@@ -147,7 +148,6 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
-
 
 class Item(models.Model):
     name = models.CharField(max_length=255)
