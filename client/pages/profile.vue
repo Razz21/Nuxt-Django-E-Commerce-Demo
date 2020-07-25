@@ -28,7 +28,7 @@
           </v-list>
         </v-card>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="8">
         <v-card>
           <v-card-text>
             <nuxt-child></nuxt-child>

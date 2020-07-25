@@ -6,13 +6,13 @@
       <AuthDialog />
     </client-only>
 
-    <v-content class="">
+    <v-main class="">
       <v-container fluid fill-height class="pa-0 ">
         <v-container fluid class="pa-0 h-full">
           <nuxt />
         </v-container>
       </v-container>
-    </v-content>
+    </v-main>
     <Footer />
   </v-app>
 </template>
