@@ -56,7 +56,7 @@
       <v-col cols="12" md="8" order="1">
         <div class="d-flex justify-space-between align-end">
           <div class="body-2">{{ countItems }}</div>
-          <OrderFilter :ordering="ordering" :order_types="order_types" />
+          <OrderFilter :ordering.sync="ordering" :order_types="order_types" />
         </div>
 
         <product-list :items="items" v-if="items.length">
@@ -208,6 +208,7 @@ export default {
     },
     ordering: {
       handler(val, old) {
+        console.log(val);
         this.$router.push({
           query: { ...this.$route.query, ordering: val }
         });
